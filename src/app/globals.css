@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F1D40;
+  --color-accent: #1BC5A3;
+  --color-light: #F5F7FA;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B7280;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Hero Background Focal Point Optimization */
+.hero-bg {
+  background-position: center center;
+}
+
+/* Mobile optimizations for focal points */
+@media (max-width: 640px) {
+  .hero-bg {
+    background-position: center 25%; /* Focus on upper area for mobile */
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-bg {
+    background-position: center 35%; /* Tablet optimization */
+  }
+}
+
+@media (min-width: 1025px) {
+  .hero-bg {
+    background-position: center center; /* Desktop - full view */
+    background-attachment: fixed; /* Parallax effect on desktop */
+  }
+}
+
+/* Services page background optimization */
+.services-bg {
+  background-position: center center;
+}
+
+@media (max-width: 640px) {
+  .services-bg {
+    background-position: center 30%; /* Focus on important elements */
+  }
+}
+
+/* Contact page background optimization */
+.contact-bg {
+  background-position: center center;
+}
+
+@media (max-width: 640px) {
+  .contact-bg {
+    background-position: center 20%; /* Focus on upper portion */
+  }
+}
+
+/* About page background optimization */
+.about-bg {
+  background-position: center center;
+}
+
+@media (max-width: 640px) {
+  .about-bg {
+    background-position: center 25%; /* Focus on key elements */
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+  .hero-bg, .services-bg, .contact-bg, .about-bg {
+    background-size: cover;
+    min-height: 100vh; /* Ensure full viewport coverage */
+  }
+  
+  /* For very small screens like older phones */
+  .hero-bg {
+    background-position: center 20%;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 896px) and (orientation: landscape) {
+  .hero-bg, .services-bg, .contact-bg, .about-bg {
+    background-position: center center;
+    background-attachment: scroll; /* Better performance in landscape */
+  }
+}
+
+/* Image optimization for all components */
+.responsive-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 640px) {
+  .responsive-image {
+    object-position: center 30%; /* Focus on upper area for mobile */
+  }
+}
+
+/* Smooth scroll and anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent flash of white content during anchor navigation */
+body {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Ensure content is visible during navigation */
+#consultation-form {
+  scroll-margin-top: 2rem;
+}
+
+/* Prevent content jump during anchor navigation */
+.motion-safe {
+  animation-fill-mode: both;
+}
