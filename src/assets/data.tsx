@@ -26,8 +26,8 @@ export const partnersData = [
   },
   {
     id: 4,
-    name: "SECP",
-    fullName: "Registered Company",
+    name: "Global Elite",
+    fullName: "Enterprise AI Alliance",
     type: "badge"
   }
 ];
@@ -144,8 +144,8 @@ export const milestonesData = [
   {
     id: 1,
     date: "November 2025",
-    title: "SECP Incorporation",
-    detail: "Officially registered as OMNISOLVEAI (SMC-PRIVATE) LIMITED under Companies Act 2017. Corp ID: 0315980.",
+    title: "Global Enterprise Architecture",
+    detail: "Structured as an international artificial intelligence agency, deploying autonomous logic clusters for enterprise operations worldwide.",
     icon: <FaFileAlt />
   },
   {
@@ -331,8 +331,8 @@ export const faqData = [
   },
   {
     id: 5,
-    question: "Is OmniSolve AI a registered company?",
-    answer: "Yes, OMNISOLVEAI (SMC-PRIVATE) LIMITED is officially registered with SECP (Securities and Exchange Commission of Pakistan) under Companies Act 2017. Our Corp ID is 0315980 and you can verify at leap.secp.gov.pk."
+    question: "Do you have enterprise compliance standards?",
+    answer: "Yes, OmniSolve AI complies with global enterprise data security frameworks. Our AI ecosystems are built explicitly for international scale and rigorous operational security."
   },
   {
     id: 6,

@@ -41,7 +41,7 @@ export default function ServicesPage() {
   const whyChooseUs = [
     { icon: FaUsers, title: "NICAT Backed", description: "Backed by Pakistan's premier tech incubator", metric: "C7" },
     { icon: FaRocket, title: "48hr Deploy", description: "Get your AI agent live in 48 hours", metric: "Fast" },
-    { icon: FaShieldAlt, title: "SECP Registered", description: "Officially registered company", metric: "✓" },
+    { icon: FaShieldAlt, title: "Enterprise Security", description: "Global compliance & data encryption", metric: "✓" },
     { icon: FaLightbulb, title: "Free Pilot", description: "2-week free trial — no risk", metric: "Free" }
   ];
 

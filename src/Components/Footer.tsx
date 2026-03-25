@@ -78,7 +78,7 @@ const Footer = () => {
                 OMNISOLVEAI (SMC-PRIVATE) LIMITED
               </p>
               <p className="text-gray-400 text-sm">
-                SECP Reg No: 0315980
+                Global HQ: Islamabad
               </p>
             </motion.div>
           </div>
@@ -216,7 +216,7 @@ const Footer = () => {
                 <div className="space-y-2 text-sm text-gray-300">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full"></div>
-                    <span>SECP Registered — Corp ID 0315980</span>
+                    <span>Enterprise Grade Security & Compliance</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-accent rounded-full"></div>
@@ -249,14 +249,7 @@ const Footer = () => {
             
             {/* Verify Link */}
             <div className="flex space-x-6 text-sm">
-              <a 
-                href="https://leap.secp.gov.pk/#/verify-company-info/0315980"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent transition-colors duration-300"
-              >
-                Verify on SECP
-              </a>
+              {/* Global compliance removed link */}
               <Link 
                 href="/privacy" 
                 className="text-gray-400 hover:text-accent transition-colors duration-300"

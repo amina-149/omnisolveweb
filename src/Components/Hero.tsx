@@ -51,7 +51,7 @@ export default function Hero() {
   }, []);
 
   const badges = [
-    { emoji: "🟢", text: "SECP Registered — Corp ID 0315980" },
+    { emoji: "🌍", text: "Global Enterprise AI Partner" },
     { emoji: "🟢", text: "NICAT Cohort 7 — Islamabad" },
     { emoji: "🟢", text: "MOU with Pakistan Executive Forum" },
     { emoji: "🟢", text: "FAO AMR Competition Winner 2025" },

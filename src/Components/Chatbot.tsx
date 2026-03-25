@@ -51,7 +51,7 @@ const knowledgeBase: { keywords: string[]; response: string }[] = [
   },
   {
     keywords: ["about", "company", "who", "kon", "kaun"],
-    response: "🏢 **OMNISOLVEAI (SMC-PRIVATE) LIMITED**\n\n📋 SECP Registered — Corp ID: 0315980\n📍 ALPHA Square Chaklala Old Airport, Rawalpindi\n🏆 FAO AMR Competition Winner 2025\n🤝 MOU with Pakistan Executive Forum\n🚀 NICAT Cohort 7 — Selected 2026\n\nFounded by Amina Riaz — building AI solutions from Pakistan for the world."
+    response: "🏢 **OMNISOLVEAI**\n\n🌍 Global Enterprise AI Partner\n📍 Core Engineering HQ: ALPHA Square, Pakistan\n🏆 FAO AMR Competition Winner 2025\n🤝 Enterprise Strategic Partnerships\n🚀 Proprietary AI Agent Ecosystems\n\nFounded by Amina Riaz — architecting Next-Gen intelligence for the world."
   },
   {
     keywords: ["founder", "ceo", "amina", "team", "leader"],
@@ -66,8 +66,8 @@ const knowledgeBase: { keywords: string[]; response: string }[] = [
     response: "🎯 **Free 2-Week Pilot!**\n\nAll our plans include a FREE 2-week trial:\n\n✅ No commitment required\n✅ Test with real customers\n✅ See actual results first\n✅ WhatsApp agent live in 48 hours\n\n👉 Visit /contact or WhatsApp us at +52 5547000330 to start!"
   },
   {
-    keywords: ["secp", "registered", "legal", "verify", "registration"],
-    response: "✅ **Legally Registered Company**\n\n📋 Name: OMNISOLVEAI (SMC-PRIVATE) LIMITED\n🔢 SECP Corp ID: 0315980\n📅 Registered: November 20, 2025\n📜 Under: Companies Act, 2017\n\n🔗 Verify at: leap.secp.gov.pk\n\nWe believe in complete transparency!"
+    keywords: ["registered", "legal", "verify", "registration"],
+    response: "✅ **Global Entity**\n\nOmniSolve AI operates as a premier international artificial intelligence agency. We comply with world-class data security standards and enterprise architectural integrity to deliver autonomous solutions to clients across the globe."
   },
   {
     keywords: ["nicat", "incubation", "incubator"],

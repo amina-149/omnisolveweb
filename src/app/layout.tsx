@@ -23,8 +23,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "OmniSolve AI — SECP Registered AI Agency | Islamabad Pakistan",
-  description: "OMNISOLVEAI (SMC-PRIVATE) LIMITED — Pakistan's SECP-registered AI agency. NICAT Cohort 7. AI Agents, Voice Agents & automation for Pakistani and international businesses. FAO Competition Winner. MOU with Pakistan Executive Forum.",
+  title: "OmniSolve AI — Enterprise AI Agency | Global Solutions",
+  description: "OmniSolve AI — Enterprise-grade AI agency delivering intelligent automation, custom voice agents, and secure data integrations for forward-thinking organizations worldwide.",
 };
 
 export default function RootLayout({

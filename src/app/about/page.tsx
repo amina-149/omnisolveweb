@@ -205,7 +205,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. SECP VERIFICATION (HIGH-TRUST MODULE) */}
+      {/* 5. GLOBAL ENTERPRISE NETWORK */}
       <section className="py-24 px-4 sm:px-8 bg-gray-50">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -218,35 +218,35 @@ export default function AboutPage() {
             </div>
             
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-bold tracking-widest uppercase mb-6">
-                <FaCheckCircle /> Officially Verified
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-bold tracking-widest uppercase mb-6">
+                <FaCheckCircle /> Globally Verified
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-primary mb-12 tracking-tight">Legal Transparency & <br/> Corporate Authority</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-primary mb-12 tracking-tight">Enterprise Infrastructure & <br/> Data Security</h2>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
                 <div>
-                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Entity Identity</div>
-                  <div className="text-2xl font-bold text-primary">OMNISOLVEAI (SMC-PRIVATE) LIMITED</div>
+                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Global Scale</div>
+                  <div className="text-2xl font-bold text-primary">Cross-Border Operations</div>
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">SECP Corporate ID</div>
-                  <div className="text-2xl font-bold text-primary">0315980</div>
+                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Datacenter Privacy</div>
+                  <div className="text-2xl font-bold text-primary">End-to-End Encryption</div>
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Inception Date</div>
-                  <div className="text-xl font-bold text-gray-700">November 20, 2025</div>
+                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Response Time SLA</div>
+                  <div className="text-xl font-bold text-gray-700">99.9% Uptime Guarantee</div>
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Jurisdiction</div>
-                  <div className="text-xl font-bold text-gray-700">Companies Act, 2017</div>
+                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Deployment Protocol</div>
+                  <div className="text-xl font-bold text-gray-700">Under 48 Hours Globally</div>
                 </div>
               </div>
 
-              <a href="https://leap.secp.gov.pk/#/verify-company-info/0315980" target="_blank" rel="noopener noreferrer"
+              <Link href="/services"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg"
               >
-                <FaExternalLinkAlt /> Verify via SECP Database
-              </a>
+                <FaExternalLinkAlt /> Explore Enterprise Architectures
+              </Link>
             </div>
           </motion.div>
         </div>
