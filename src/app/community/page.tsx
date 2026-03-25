@@ -1,38 +1,46 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FaGraduationCap, FaBullhorn } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGraduationCap, FaBullhorn, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
+import { HiArrowRight } from "react-icons/hi2";
 
 export default function CommunityPage() {
   const [internIsSubmitting, setInternIsSubmitting] = useState(false);
-  const [internMessage, setInternMessage] = useState<string | null>(null);
+  const [internMessage, setInternMessage] = useState<{ type: 'success' | 'error' | null, text: string }>({ type: null, text: '' });
   const [ambassadorIsSubmitting, setAmbassadorIsSubmitting] = useState(false);
-  const [ambassadorMessage, setAmbassadorMessage] = useState<string | null>(null);
+  const [ambassadorMessage, setAmbassadorMessage] = useState<{ type: 'success' | 'error' | null, text: string }>({ type: null, text: '' });
 
   const handleInternSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setInternIsSubmitting(true);
-    setInternMessage("⏳ Submitting application...");
+    setInternMessage({ type: null, text: "Processing your application securely..." });
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/submit", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "Internship",
+          name: formData.get("name"),
+          university: formData.get("university"),
+          email: formData.get("email"),
+          message: formData.get("message")
+        })
       });
 
       const data = await response.json();
 
       if (data.success) {
-        setInternMessage("✅ Application submitted successfully! We will contact you soon.");
+        setInternMessage({ type: 'success', text: "Application received! Welcome to the queue." });
         form.reset();
       } else {
-        setInternMessage("❌ Something went wrong. Please try again.");
+        setInternMessage({ type: 'error', text: "Verification failed. Please try again." });
       }
     } catch {
-      setInternMessage("❌ Failed to send application. Please check your connection.");
+      setInternMessage({ type: 'error', text: "Network anomaly detected. Please check your connection." });
     } finally {
       setInternIsSubmitting(false);
     }
@@ -41,161 +49,204 @@ export default function CommunityPage() {
   const handleAmbassadorSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setAmbassadorIsSubmitting(true);
-    setAmbassadorMessage("⏳ Submitting application...");
+    setAmbassadorMessage({ type: null, text: "Encrypting & transmitting details..." });
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/submit", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "Ambassador",
+          name: formData.get("name"),
+          university: formData.get("university"),
+          email: formData.get("email"),
+          message: formData.get("message")
+        })
       });
 
       const data = await response.json();
 
       if (data.success) {
-        setAmbassadorMessage("✅ Application submitted successfully! Welcome to the movement.");
+        setAmbassadorMessage({ type: 'success', text: "Identity registered successfully. We will be in touch." });
         form.reset();
       } else {
-        setAmbassadorMessage("❌ Something went wrong. Please try again.");
+        setAmbassadorMessage({ type: 'error', text: "Processing failed. Please attempt again." });
       }
     } catch {
-      setAmbassadorMessage("❌ Failed to send application. Please check your connection.");
+      setAmbassadorMessage({ type: 'error', text: "System connection dropped. Please reconnect." });
     } finally {
       setAmbassadorIsSubmitting(false);
     }
   };
 
+  // Modern Input Component
+  const TechInput = ({ label, name, type = "text", placeholder, disabled, isTextArea = false }: any) => (
+    <div className="relative group">
+      <label className="block text-xs font-bold tracking-widest text-primary/70 uppercase mb-2 ml-1">
+        {label}
+      </label>
+      <div className="relative">
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"></div>
+        {isTextArea ? (
+          <textarea 
+            name={name} required disabled={disabled} rows={4}
+            className="relative w-full px-5 py-4 bg-white/70 backdrop-blur-sm border border-gray-200/80 rounded-xl focus:bg-white focus:outline-none focus:ring-0 text-primary placeholder-gray-400 font-medium disabled:opacity-50 transition-all resize-none shadow-inner"
+            placeholder={placeholder}
+          />
+        ) : (
+          <input 
+            type={type} name={name} required disabled={disabled}
+            className="relative w-full px-5 py-4 bg-white/70 backdrop-blur-sm border border-gray-200/80 rounded-xl focus:bg-white focus:outline-none focus:ring-0 text-primary placeholder-gray-400 font-medium disabled:opacity-50 transition-all shadow-inner"
+            placeholder={placeholder}
+          />
+        )}
+      </div>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen pt-24 pb-20 px-4 md:px-16 overflow-hidden bg-gray-50">
+    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100">
       
-      {/* Hero Section */}
+      {/* High-Tech Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-[500px] bg-grid-pattern opacity-5 pointer-events-none"></div>
+      <div className="absolute -top-[300px] -right-[300px] w-[800px] h-[800px] bg-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute -bottom-[300px] -left-[300px] w-[600px] h-[600px] bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+      {/* Hero Header */}
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto text-center mb-20"
+        initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-4xl mx-auto text-center mb-24 relative z-10"
       >
-        <div className="inline-block bg-accent/10 px-6 py-2 rounded-full mb-6 border border-accent/20">
-          <span className="text-accent font-bold tracking-wider text-sm">LAUNCHING APRIL 15, 2026</span>
-        </div>
-        <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6">OmniSolve AI Community</h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          We are equipping the next generation of leaders with real-world AI skills. Join our mission to build Pakistani AI ambition for the world.
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/80 backdrop-blur-md border border-gray-200 shadow-sm mb-8"
+        >
+          <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+          <span className="text-sm font-bold tracking-widest text-primary uppercase">Global Launch • April 15, 2026</span>
+        </motion.div>
+        
+        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/90 to-accent mb-8 tracking-tight">
+          Next-Gen Ecosystem
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+          We are engineering the future of cognitive systems. Join our elite network and build intelligence for the world.
         </p>
       </motion.div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      {/* Dual Forms Layout */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-14 relative z-10">
         
-        {/* Internship Program Form */}
+        {/* INTERNSHIP FORM */}
         <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-gray-100"
+          initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: "easeOut" }}
+          className="group relative"
         >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center">
-              <FaGraduationCap className="text-blue-600 text-2xl" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-primary">Internship Program</h2>
-              <p className="text-gray-500 text-sm">Real-world AI Engineering & Marketing</p>
-            </div>
-          </div>
-
-          <form onSubmit={handleInternSubmit} className="space-y-5">
-            <input type="hidden" name="access_key" value="066ad15a-2f3a-4c38-84ef-66544dc04620" />
-            <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
-            <input type="hidden" name="subject" value="New Internship Application - OmniSolve AI" />
+          <div className="absolute -inset-1 bg-gradient-to-br from-primary/10 to-transparent rounded-[2.5rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-700"></div>
+          <div className="relative h-full bg-white/80 backdrop-blur-xl border border-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
             
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-              <input type="text" name="name" required disabled={internIsSubmitting} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent" placeholder="Amina Ahmed" />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">University / Institute</label>
-              <input type="text" name="university" required disabled={internIsSubmitting} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent" placeholder="NUST, FAST, COMSATS, etc." />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <input type="email" name="email" required disabled={internIsSubmitting} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent" placeholder="you@university.edu.pk" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Why do you want to join us?</label>
-              <textarea name="message" required disabled={internIsSubmitting} rows={4} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent resize-none" placeholder="Share your motivation..." />
-            </div>
-
-            {internMessage && (
-              <div className={`p-4 rounded-xl text-center text-sm font-medium ${internMessage.includes('✅') ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
-                {internMessage}
+            <div className="flex items-center gap-6 mb-10 border-b border-gray-100 pb-8">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-primary flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <FaGraduationCap className="text-white text-3xl" />
               </div>
-            )}
+              <div>
+                <h2 className="text-3xl font-bold text-primary tracking-tight">AI Residency</h2>
+                <p className="text-gray-400 font-medium mt-1 uppercase tracking-wider text-xs">Engineering & Strategy</p>
+              </div>
+            </div>
 
-            <button type="submit" disabled={internIsSubmitting} className="w-full font-bold py-4 rounded-xl bg-primary text-white hover:bg-primary/90 transition-all shadow-md">
-              Apply for Internship
-            </button>
-          </form>
+            <form onSubmit={handleInternSubmit} className="space-y-6">
+              <TechInput label="Full Identity" name="name" placeholder="E.g. Amina Ahmed" disabled={internIsSubmitting} />
+              <TechInput label="Academic Institution" name="university" placeholder="Current or Alma Mater" disabled={internIsSubmitting} />
+              <TechInput label="Secure Comm Link" name="email" type="email" placeholder="Email Address" disabled={internIsSubmitting} />
+              <TechInput label="Mission Statement" name="message" isTextArea placeholder="Why are you driven to build AI with us?" disabled={internIsSubmitting} />
+
+              <AnimatePresence>
+                {internMessage.text && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
+                    className={`p-4 rounded-xl flex items-center gap-3 text-sm font-bold border ${
+                      internMessage.type === 'success' ? 'bg-green-50 border-green-200 text-green-700' : 
+                      internMessage.type === 'error' ? 'bg-red-50 border-red-200 text-red-700' : 
+                      'bg-blue-50 border-blue-200 text-blue-700'
+                    }`}
+                  >
+                    {internMessage.type === 'success' && <FaCheckCircle className="text-lg" />}
+                    {internMessage.type === 'error' && <FaExclamationCircle className="text-lg" />}
+                    {internMessage.text}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <button 
+                type="submit" disabled={internIsSubmitting} 
+                className="group/btn relative w-full flex justify-center items-center gap-2 overflow-hidden rounded-xl bg-primary px-8 py-4 font-bold text-white transition-all hover:bg-primary/90 disabled:opacity-70"
+              >
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out"></div>
+                <span className="relative z-10 flex items-center gap-2">
+                  {internIsSubmitting ? 'Authenticating...' : 'Initialize Application'}
+                  <HiArrowRight className="text-lg group-hover/btn:translate-x-1 transition-transform" />
+                </span>
+              </button>
+            </form>
+          </div>
         </motion.div>
 
-        {/* Ambassador Program Form */}
+        {/* AMBASSADOR FORM */}
         <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-gray-100"
+          initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          className="group relative"
         >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-14 h-14 bg-accent/20 rounded-2xl flex items-center justify-center">
-              <FaBullhorn className="text-accent text-2xl" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-primary">Campus Ambassador</h2>
-              <p className="text-gray-500 text-sm">Lead the AI Revolution on Campus</p>
-            </div>
-          </div>
-
-          <form onSubmit={handleAmbassadorSubmit} className="space-y-5">
-            <input type="hidden" name="access_key" value="066ad15a-2f3a-4c38-84ef-66544dc04620" />
-            <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
-            <input type="hidden" name="subject" value="New Campus Ambassador Application" />
+          <div className="absolute -inset-1 bg-gradient-to-br from-accent/20 to-transparent rounded-[2.5rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-700"></div>
+          <div className="relative h-full bg-white/80 backdrop-blur-xl border border-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
             
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-              <input type="text" name="name" required disabled={ambassadorIsSubmitting} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent" placeholder="Your Name" />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">University / Institute</label>
-              <input type="text" name="university" required disabled={ambassadorIsSubmitting} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent" placeholder="Where do you study?" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-              <input type="email" name="email" required disabled={ambassadorIsSubmitting} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent" placeholder="you@example.com" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">How will you promote OmniSolve AI?</label>
-              <textarea name="message" required disabled={ambassadorIsSubmitting} rows={4} className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-accent resize-none" placeholder="We evaluate creativity and reach..." />
-            </div>
-
-            {ambassadorMessage && (
-              <div className={`p-4 rounded-xl text-center text-sm font-medium ${ambassadorMessage.includes('✅') ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
-                {ambassadorMessage}
+            <div className="flex items-center gap-6 mb-10 border-b border-gray-100 pb-8">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-orange-400 flex items-center justify-center shadow-lg shadow-accent/20">
+                <FaBullhorn className="text-white text-3xl" />
               </div>
-            )}
+              <div>
+                <h2 className="text-3xl font-bold text-primary tracking-tight">Global Ambassador</h2>
+                <p className="text-gray-400 font-medium mt-1 uppercase tracking-wider text-xs">Network & Growth</p>
+              </div>
+            </div>
 
-            <button type="submit" disabled={ambassadorIsSubmitting} className="w-full font-bold py-4 rounded-xl bg-accent text-white hover:bg-accent/90 transition-all shadow-md">
-              Apply as Ambassador
-            </button>
-          </form>
+            <form onSubmit={handleAmbassadorSubmit} className="space-y-6">
+              <TechInput label="Full Identity" name="name" placeholder="Your Name" disabled={ambassadorIsSubmitting} />
+              <TechInput label="Territory / Campus" name="university" placeholder="Where do you establish presence?" disabled={ambassadorIsSubmitting} />
+              <TechInput label="Secure Comm Link" name="email" type="email" placeholder="Email Address" disabled={ambassadorIsSubmitting} />
+              <TechInput label="Expansion Strategy" name="message" isTextArea placeholder="Detail your strategy to expand the OmniSolve network..." disabled={ambassadorIsSubmitting} />
+
+              <AnimatePresence>
+                {ambassadorMessage.text && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
+                    className={`p-4 rounded-xl flex items-center gap-3 text-sm font-bold border ${
+                      ambassadorMessage.type === 'success' ? 'bg-green-50 border-green-200 text-green-700' : 
+                      ambassadorMessage.type === 'error' ? 'bg-red-50 border-red-200 text-red-700' : 
+                      'bg-orange-50 border-orange-200 text-orange-700'
+                    }`}
+                  >
+                    {ambassadorMessage.type === 'success' && <FaCheckCircle className="text-lg" />}
+                    {ambassadorMessage.type === 'error' && <FaExclamationCircle className="text-lg" />}
+                    {ambassadorMessage.text}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <button 
+                type="submit" disabled={ambassadorIsSubmitting} 
+                className="group/btn relative w-full flex justify-center items-center gap-2 overflow-hidden rounded-xl bg-accent px-8 py-4 font-bold text-white transition-all hover:bg-accent/90 disabled:opacity-70"
+              >
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out"></div>
+                <span className="relative z-10 flex items-center gap-2">
+                  {ambassadorIsSubmitting ? 'Authenticating...' : 'Submit Profile Override'}
+                  <HiArrowRight className="text-lg group-hover/btn:translate-x-1 transition-transform" />
+                </span>
+              </button>
+            </form>
+          </div>
         </motion.div>
 
       </div>
