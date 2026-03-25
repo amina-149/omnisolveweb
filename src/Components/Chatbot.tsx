@@ -51,7 +51,7 @@ const knowledgeBase: { keywords: string[]; response: string }[] = [
   },
   {
     keywords: ["about", "company", "who", "kon", "kaun"],
-    response: "🏢 **OMNISOLVEAI (SMC-PRIVATE) LIMITED**\n\n📋 SECP Registered — Corp ID: 0315980\n📍 NICAT, H-9, Islamabad, Pakistan\n🏆 FAO AMR Competition Winner 2025\n🤝 MOU with Pakistan Executive Forum\n🚀 NICAT Cohort 7 — Selected 2026\n\nFounded by Amina Riaz — building AI solutions from Pakistan for the world."
+    response: "🏢 **OMNISOLVEAI (SMC-PRIVATE) LIMITED**\n\n📋 SECP Registered — Corp ID: 0315980\n📍 ALPHA Square Chaklala Old Airport, Rawalpindi\n🏆 FAO AMR Competition Winner 2025\n🤝 MOU with Pakistan Executive Forum\n🚀 NICAT Cohort 7 — Selected 2026\n\nFounded by Amina Riaz — building AI solutions from Pakistan for the world."
   },
   {
     keywords: ["founder", "ceo", "amina", "team", "leader"],
@@ -59,11 +59,11 @@ const knowledgeBase: { keywords: string[]; response: string }[] = [
   },
   {
     keywords: ["contact", "reach", "call", "email", "rabta"],
-    response: "📬 **Get In Touch:**\n\n📧 amina@omnisolveai.digital\n📧 omnisolveai@gmail.com\n📱 +92 300 101 6022 (WhatsApp)\n📍 NICAT, H-9, Islamabad, Pakistan\n\nOr visit /contact to fill out our form!\n\nWe respond within 24 hours. 🚀"
+    response: "📬 **Get In Touch:**\n\n📧 amina@omnisolveai.org\n📧 info@omnisolveai.org\n📧 career@omnisolveai.org\n📱 +52 5547000330 (WhatsApp)\n📍 ALPHA Square Chaklala, Rawalpindi\n\nOr visit /contact to fill out our form!\n\nWe respond within 24 hours. 🚀"
   },
   {
     keywords: ["demo", "trial", "free", "pilot", "try", "test"],
-    response: "🎯 **Free 2-Week Pilot!**\n\nAll our plans include a FREE 2-week trial:\n\n✅ No commitment required\n✅ Test with real customers\n✅ See actual results first\n✅ WhatsApp agent live in 48 hours\n\n👉 Visit /contact or WhatsApp us at +92 300 101 6022 to start!"
+    response: "🎯 **Free 2-Week Pilot!**\n\nAll our plans include a FREE 2-week trial:\n\n✅ No commitment required\n✅ Test with real customers\n✅ See actual results first\n✅ WhatsApp agent live in 48 hours\n\n👉 Visit /contact or WhatsApp us at +52 5547000330 to start!"
   },
   {
     keywords: ["secp", "registered", "legal", "verify", "registration"],
@@ -175,7 +175,7 @@ export default function Chatbot() {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 left-6 z-50 w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+            className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
             aria-label="Open chatbot"
           >
             <HiChatBubbleLeftRight className="text-white text-2xl" />
@@ -195,7 +195,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-6 left-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[550px] max-h-[calc(100vh-100px)] bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[550px] max-h-[calc(100vh-120px)] bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary to-primary/90 p-4 flex items-center justify-between flex-shrink-0">

@@ -1,3 +1,9 @@
+import React from 'react';
+import { 
+  FaTrophy, FaHandshake, FaRocket, FaPlane, FaPhone, FaComments, 
+  FaBullseye, FaRobot, FaCogs, FaFileAlt, FaLeaf, FaLaptopCode
+} from 'react-icons/fa';
+
 // Partners & Recognition Data (replaces fake testimonials)
 export const partnersData = [
   {
@@ -27,10 +33,10 @@ export const partnersData = [
 ];
 
 export const recognitionCards = [
-  { id: 1, title: "FAO AMR Competition Winner 2025", icon: "🏆" },
-  { id: 2, title: "MOU signed with Pakistan Executive Forum", icon: "🤝" },
-  { id: 3, title: "NICAT Cohort 7 — Selected 2026", icon: "🚀" },
-  { id: 4, title: "AeroHack 2026 Participant", icon: "✈️" }
+  { id: 1, title: "FAO AMR Competition Winner 2025", icon: <FaTrophy /> },
+  { id: 2, title: "MOU signed with Pakistan Executive Forum", icon: <FaHandshake /> },
+  { id: 3, title: "NICAT Cohort 7 — Selected 2026", icon: <FaRocket /> },
+  { id: 4, title: "AeroHack 2026 Participant", icon: <FaPlane /> }
 ];
 
 // Services Data for services page
@@ -114,6 +120,22 @@ export const detailedServicesData = [
       "From employee onboarding and payroll processing to invoice management and customer relationship tracking, we build custom automation that fits your exact business needs.",
       "Leveraging our NICAT network and enterprise partnerships, we deliver scalable automation solutions for businesses of all sizes across Pakistan and internationally."
     ]
+  },
+  {
+    id: "website-ai-social-media",
+    icon: <FaLaptopCode />,
+    iconName: "FaLaptopCode",
+    bg: "/services.png",
+    title: "Complete System: Web + AI Agent + Social Media",
+    tag: "All-in-One",
+    description: "End-to-end digital transformation: custom website, embedded AI agents, and complete social media marketing management.",
+    badge: "All-in-One",
+    stats: ["Professional Website", "Integrated AI Agents", "Social Media Management"],
+    detailedDescription: [
+      "Our most comprehensive package provides a complete digital transformation for your business. We build a high-converting, professional website tailored to your brand.",
+      "We embed powerful AI Voice and WhatsApp agents directly into your new platform, automating customer service and lead generation from day one.",
+      "To drive traffic, our expert marketing team handles your complete Social Media Marketing, ensuring your AI agents have a constant stream of leads to engage with and convert."
+    ]
   }
 ];
 
@@ -124,42 +146,42 @@ export const milestonesData = [
     date: "November 2025",
     title: "SECP Incorporation",
     detail: "Officially registered as OMNISOLVEAI (SMC-PRIVATE) LIMITED under Companies Act 2017. Corp ID: 0315980.",
-    icon: "📋"
+    icon: <FaFileAlt />
   },
   {
     id: 2,
     date: "2025",
     title: "FAO AMR Competition — Winner",
     detail: "Amina Riaz won the AMR Project Competition 2025 organized under the United Nations Food & Agriculture Organization (FAO).",
-    icon: "🏆"
+    icon: <FaTrophy />
   },
   {
     id: 3,
     date: "2025",
     title: "Kisan Pukar AI — Product Launch",
     detail: "Launched Pakistan's first AI-powered voice assistant for farmers — providing agricultural guidance, weather updates, and crop advice in local languages.",
-    icon: "🌾"
+    icon: <FaLeaf />
   },
   {
     id: 4,
     date: "2025/2026",
     title: "MOU with Pakistan Executive Forum",
     detail: "Signed a formal MOU with the Pakistan Executive Forum, opening doors to enterprise clients across Pakistan's corporate sector.",
-    icon: "🤝"
+    icon: <FaHandshake />
   },
   {
     id: 5,
     date: "2026",
     title: "NICAT Cohort 7 — Selected",
     detail: "Officially selected in Cohort 7 of NICAT (National Incubation Center), Pakistan's premier government-backed tech incubator. Launch date: April 13, 2026.",
-    icon: "🚀"
+    icon: <FaRocket />
   },
   {
     id: 6,
     date: "2026",
     title: "AeroHack 2026 — Participant",
     detail: "Selected to participate in AeroHack 2026 — a competitive aerospace and technology hackathon.",
-    icon: "✈️"
+    icon: <FaPlane />
   }
 ];
 

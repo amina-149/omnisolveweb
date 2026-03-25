@@ -19,7 +19,8 @@ import {
   FaUsers,
   FaShieldAlt,
   FaCheckCircle,
-  FaRocket
+  FaRocket,
+  FaLaptopCode
 } from "react-icons/fa";
 import PartnersRecognition from "@/Components/PartnersRecognition";
 import CallToAction from "@/Components/CallToAction";
@@ -32,6 +33,7 @@ const ServiceSVGs: Record<string, React.ReactNode> = {
   "ai-lead-generation": <FaBullseye size={30} color="#fff" />,
   "ai-sdr-agent": <HiOutlineUserGroup size={40} color="#fff" />,
   "business-process-automation": <HiOutlineCog size={40} color="#fff" />,
+  "website-ai-social-media": <FaLaptopCode size={40} color="#fff" />,
 };
 
 export default function ServicesPage() {
@@ -42,7 +44,8 @@ export default function ServicesPage() {
     FaComments,
     FaBullseye,
     FaRobot,
-    FaCogs
+    FaCogs,
+    FaLaptopCode
   };
   
   const services = detailedServicesData.map(service => ({

@@ -124,35 +124,35 @@ const Footer = () => {
               {/* Contact Email */}
               <div className="mb-4">
                 <a 
-                  href="mailto:amina@omnisolveai.digital"
+                  href="mailto:amina@omnisolveai.org"
                   className="flex items-center space-x-3 text-gray-300 hover:text-accent transition-colors duration-300 group"
                 >
                   <HiMail 
                     size={20} 
                     className="group-hover:scale-110 transition-transform duration-300" 
                   />
-                  <span className="text-base">amina@omnisolveai.digital</span>
+                  <span className="text-base">amina@omnisolveai.org</span>
                 </a>
               </div>
 
               {/* Secondary Email */}
               <div className="mb-4">
                 <a 
-                  href="mailto:omnisolveai@gmail.com"
+                  href="mailto:info@omnisolveai.org"
                   className="flex items-center space-x-3 text-gray-300 hover:text-accent transition-colors duration-300 group"
                 >
                   <HiMail 
                     size={20} 
                     className="group-hover:scale-110 transition-transform duration-300" 
                   />
-                  <span className="text-base">omnisolveai@gmail.com</span>
+                  <span className="text-base">info@omnisolveai.org</span>
                 </a>
               </div>
 
               {/* WhatsApp Number */}
               <div className="mb-8">
                 <a 
-                  href="https://wa.me/923001016022"
+                  href="https://wa.me/525547000330"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 text-gray-300 hover:text-accent transition-colors duration-300 group"
@@ -161,7 +161,7 @@ const Footer = () => {
                     size={20} 
                     className="group-hover:scale-110 transition-transform duration-300" 
                   />
-                  <span className="text-base">+92 300 101 6022 (WhatsApp)</span>
+                  <span className="text-base">+52 5547000330</span>
                 </a>
               </div>
 
@@ -205,8 +205,8 @@ const Footer = () => {
               <div className="mb-8">
                 <div className="text-gray-300 space-y-1">
                   <p className="font-medium">OMNISOLVEAI (SMC-PRIVATE) LIMITED</p>
-                  <p>NICAT — National Incubation Center</p>
-                  <p>H-9, Islamabad, Pakistan</p>
+                  <p>ALPHA Square Chaklala Old Airport</p>
+                  <p>Chaklala Road Rawalpindi, Punjab</p>
                 </div>
               </div>
 

@@ -205,12 +205,12 @@ export default function ContactPage() {
                       Quick questions? Send a WhatsApp message for instant response.
                     </p>
                     <a
-                      href="https://wa.me/923001016022?text=Hi%20OmniSolve%20AI%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20AI%20services."
+                      href="https://wa.me/525547000330?text=Hi%20OmniSolve%20AI%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20AI%20services."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-colors group"
                     >
-                      <span>+92 300 101 6022</span>
+                      <span>+52 5547000330</span>
                       <div className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</div>
                     </a>
                   </div>
@@ -237,10 +237,10 @@ export default function ContactPage() {
                       Send us your project details and we&apos;ll respond within 24 hours.
                     </p>
                     <a
-                      href="mailto:amina@omnisolveai.digital"
+                      href="mailto:amina@omnisolveai.org"
                       className="inline-flex items-center text-accent font-semibold hover:text-accent/80 transition-colors group"
                     >
-                      <span>amina@omnisolveai.digital</span>
+                      <span>amina@omnisolveai.org</span>
                       <div className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</div>
                     </a>
                   </div>
@@ -320,8 +320,8 @@ export default function ContactPage() {
                     <h3 className="font-bold text-primary text-xl mb-2">Office Location</h3>
                     <div className="text-gray-600 space-y-1">
                       <p className="font-medium">OMNISOLVEAI (SMC-PRIVATE) LIMITED</p>
-                      <p>NICAT — National Incubation Center</p>
-                      <p>H-9, Islamabad, Pakistan</p>
+                      <p>ALPHA Square Chaklala Old Airport</p>
+                      <p>Chaklala Road Rawalpindi, Punjab</p>
                       <p className="text-sm text-gray-500 mt-2">SECP Corp ID: 0315980</p>
                     </div>
                   </div>

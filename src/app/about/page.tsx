@@ -190,7 +190,7 @@ export default function AboutPage() {
                     <FaCogs className="text-6xl text-accent mb-6 mx-auto animate-spin-slow" />
                     <h3 className="text-2xl font-bold text-white mb-4">AI Innovation Hub</h3>
                     <p className="text-white/90 leading-relaxed">
-                      NICAT, H-9, Islamabad — Where Pakistani AI meets global ambition
+                      ALPHA Square Chaklala, Rawalpindi — Where Pakistani AI meets global ambition
                     </p>
                   </div>
                 </div>
@@ -324,7 +324,7 @@ export default function AboutPage() {
                 </p>
 
                 <p>
-                  OmniSolve AI is competing on the global stage from Islamabad.
+                  OmniSolve AI is competing on the global stage from Rawalpindi.
                 </p>
               </div>
 
