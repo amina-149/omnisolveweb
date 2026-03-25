@@ -5,6 +5,7 @@ import Header from "../Components/Header";
 import Footer from "@/Components/Footer";
 import WhatsAppButton from "@/Components/WhatsAppButton";
 import Chatbot from "@/Components/Chatbot";
+import Preloader from "@/Components/Preloader";
 import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} font-poppins antialiased`}
       >
+        <Preloader />
         <Header />
         {children}
         <Footer />

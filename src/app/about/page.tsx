@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   FaLightbulb, FaHandshake, FaRocket, FaLinkedin, FaArrowRight,
   FaEye, FaBullseye, FaCogs, FaHeart, FaGithub, FaExternalLinkAlt, FaShieldAlt, FaCheckCircle

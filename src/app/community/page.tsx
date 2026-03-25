@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGraduationCap, FaBullhorn, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
-import { HiArrowRight } from "react-icons/hi2";
+import { FaGraduationCap, FaBullhorn, FaCheckCircle, FaExclamationCircle, FaChartLine, FaImages } from "react-icons/fa";
+import { HiArrowRight, HiOutlineGlobeAlt } from "react-icons/hi2";
 
 export default function CommunityPage() {
   const [internIsSubmitting, setInternIsSubmitting] = useState(false);
@@ -135,6 +135,53 @@ export default function CommunityPage() {
           We are engineering the future of cognitive systems. Join our elite network and build intelligence for the world.
         </p>
       </motion.div>
+
+      {/* NEW: COMMUNITY GALLERY (BEYOND BORING) */}
+      <section className="max-w-7xl mx-auto mb-32 relative z-10">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+          <div className="max-w-xl">
+            <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter mb-4">
+              COMMUNITY IN ACTION
+            </h2>
+            <p className="text-gray-500 font-medium">Inside the elite environments where we build, break, and reinvent AI.</p>
+          </div>
+          <div className="flex gap-4">
+             <div className="px-6 py-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl text-primary font-bold text-sm flex items-center gap-2">
+                <FaChartLine className="text-accent" /> 240% Growth YOY
+             </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[600px]">
+          <motion.div 
+            whileHover={{ scale: 0.98 }}
+            className="md:col-span-2 relative rounded-[3rem] overflow-hidden group cursor-crosshair border border-gray-200 shadow-2xl"
+          >
+            <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10" />
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200" alt="Team Hackathon" className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" />
+            <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-black/80 to-transparent z-20">
+               <span className="text-accent font-black text-xs uppercase tracking-widest mb-2 block">Engineering HQ</span>
+               <h3 className="text-white text-3xl font-black">NICAT COHORT 7 INTENSIVE</h3>
+            </div>
+          </motion.div>
+          <div className="grid grid-rows-2 gap-6">
+            <motion.div 
+              whileHover={{ scale: 0.98 }}
+              className="relative rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-xl"
+            >
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600" alt="Workshop" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-primary/40" />
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 0.98 }}
+              className="relative rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-xl bg-accent flex flex-col items-center justify-center p-8 text-center"
+            >
+              <HiOutlineGlobeAlt className="text-white text-6xl mb-4 animate-spin-slow" />
+              <h4 className="text-white font-black text-xl leading-tight">GLOBAL REACH OVERRIDE</h4>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Dual Forms Layout */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-14 relative z-10">

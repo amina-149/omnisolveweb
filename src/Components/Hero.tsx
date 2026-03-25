@@ -2,138 +2,108 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi2";
+import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement | null>(null);
-  const headlineRef = useRef<HTMLHeadingElement | null>(null);
-  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
-  const badgesRef = useRef<HTMLDivElement | null>(null);
-  const buttonsRef = useRef<HTMLDivElement | null>(null);
-  const statsRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top center",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      if (headlineRef.current) {
-        tl.from(headlineRef.current, { y: 50, opacity: 0, duration: 0.8, ease: "power2.out" });
-      }
-      if (subtitleRef.current) {
-        tl.from(subtitleRef.current, { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.3");
-      }
-      if (badgesRef.current) {
-        tl.from(badgesRef.current, { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" }, "-=0.2");
-      }
-      if (buttonsRef.current) {
-        tl.from(buttonsRef.current, { y: 20, opacity: 0, scale: 0.95, duration: 0.5, ease: "back.out(1.7)" }, "-=0.2");
-      }
-      if (statsRef.current) {
-        tl.from(statsRef.current, { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.1");
-      }
-    }, heroRef);
-
-    return () => {
-      ctx.revert();
-      if (typeof ScrollTrigger !== "undefined" && typeof ScrollTrigger.getAll === "function") {
-        ScrollTrigger.getAll().forEach((st) => st.kill());
-      }
-    };
-  }, []);
-
-  const badges = [
-    { emoji: "🌍", text: "Global Enterprise AI Partner" },
-    { emoji: "🟢", text: "NICAT Cohort 7 — Islamabad" },
-    { emoji: "🟢", text: "MOU with Pakistan Executive Forum" },
-    { emoji: "🟢", text: "FAO AMR Competition Winner 2025" },
-  ];
-
-  const stats = [
-    { number: "1", label: "Live AI Product", sub: "Kisan Pukar AI" },
-    { number: "3+", label: "Govt & Enterprise Partners", sub: "" },
-    { number: "2", label: "International Competitions", sub: "AMR + AeroHack" },
-    { number: "48hrs", label: "Agent Deployment Time", sub: "" },
-  ];
+  const containerRef = useRef(null);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
-    <>
-      <section
-        ref={heroRef}
-        className="relative w-full min-h-screen flex items-center justify-center bg-cover bg-no-repeat hero-bg"
-        style={{ backgroundImage: "url('/hero.png')" }}
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      {/* 1. HIGH-ENERGY REFRACTIVE BACKGROUND */}
+      <div className="absolute inset-0 z-0">
+        <motion.div 
+          style={{ y: y1 }}
+          className="absolute top-[-10%] left-[-10%] w-[120%] h-[120%] opacity-20"
+        >
+          <div className="absolute top-[20%] left-[10%] w-[40%] h-[40%] bg-accent/40 blur-[120px] rounded-full animate-pulse" />
+          <div className="absolute bottom-[20%] right-[10%] w-[50%] h-[50%] bg-primary/20 blur-[150px] rounded-full" />
+        </motion.div>
+        
+        {/* Animated Mesh Grid */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 text-center">
+        {/* 2. ELITE BADGE */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-8"
+        >
+          <span className="w-2 h-2 bg-accent rounded-full animate-ping" />
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">
+            Universal Intelligence Protocol Active
+          </span>
+        </motion.div>
+
+        {/* 3. BOLD TYPOGRAPHY (OPENAI STYLE) */}
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-6xl md:text-8xl lg:text-9xl font-black text-primary tracking-tighter leading-[0.9] mb-8"
+        >
+          ARCHITECTING <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+            AUTONOMOUS
+          </span> <br />
+          FUTURES.
+        </motion.h1>
+
+        {/* 4. HIGH-SIGNAL SUBTITLE */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 1 }}
+          className="text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto font-medium leading-relaxed mb-12"
+        >
+          We build sovereign AI agents that think, execute, and scale. 
+          From proprietary voice ecosystems to enterprise-grade automation — 
+          we are the intelligence layer for the modern world.
+        </motion.p>
+
+        {/* 5. CTAs WITH MAGNETIC FEEL */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+          <Link href="/contact" className="group relative">
+             <div className="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+             <button className="relative flex items-center gap-3 px-10 py-5 bg-primary text-white font-black text-lg rounded-full hover:scale-[1.02] active:scale-95 transition-all">
+                BOOK ELITE DEMO
+                <HiArrowRight className="text-accent group-hover:translate-x-1 transition-transform" />
+             </button>
+          </Link>
+          
+          <Link href="/pricing">
+             <button className="px-10 py-5 bg-transparent border-2 border-primary/10 text-primary font-black text-lg rounded-full hover:bg-primary/5 transition-all">
+                VIEW ARCHITECTURES
+             </button>
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        style={{ opacity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <div className="absolute inset-0 bg-black/65" />
-
-        <div className="relative z-10 flex flex-col items-start justify-center text-left px-6 py-20 w-full max-w-7xl mx-auto">
-          <h1
-            ref={headlineRef}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 max-w-5xl leading-tight"
-          >
-            Pakistan&apos;s AI Agency —{" "}
-            <span className="text-accent">Built for the World</span>
-          </h1>
-
-          <p
-            ref={subtitleRef}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 font-normal sm:font-medium mb-8 max-w-4xl leading-relaxed"
-          >
-            We deploy AI Agents, Voice Agents &amp; Automation that run your business 24/7 — Islamabad to the globe.
-          </p>
-
-          {/* Trust Badges */}
-          <div ref={badgesRef} className="flex flex-wrap gap-3 mb-10">
-            {badges.map((badge, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-xs sm:text-sm text-white font-medium"
-              >
-                <span>{badge.emoji}</span>
-                <span>{badge.text}</span>
-              </span>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Link href="/contact">
-              <button className="group flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white font-bold text-base md:text-lg rounded-full hover:bg-accent/90 transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto sm:min-w-[220px]">
-                <span>Book Free Demo</span>
-                <HiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
-            <Link href="/pricing">
-              <button className="flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-base md:text-lg rounded-full hover:bg-white/20 transition-all duration-300 w-full sm:w-auto sm:min-w-[220px]">
-                View Pricing
-              </button>
-            </Link>
-          </div>
+        <div className="w-1 h-12 bg-gradient-to-b from-primary/20 to-transparent rounded-full overflow-hidden">
+          <motion.div 
+            animate={{ y: [0, 48] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-full h-1/2 bg-accent"
+          />
         </div>
-      </section>
-
-      {/* Stats Bar */}
-      <section ref={statsRef} className="bg-primary py-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary opacity-90" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-1">{stat.number}</div>
-                <div className="text-white font-medium text-sm md:text-base">{stat.label}</div>
-                {stat.sub && <div className="text-white/60 text-xs mt-0.5">{stat.sub}</div>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+      </motion.div>
+    </section>
   );
 }
+

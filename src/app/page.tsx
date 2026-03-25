@@ -1,5 +1,5 @@
 import Hero from "@/Components/Hero";
-import TrustedBy from "@/Components/TrustedBy";
+import TrustMarquee from "@/Components/TrustMarquee";
 import AboutMission from "@/Components/AboutMission";
 import Services from "@/Components/Services";
 import CaseStudiesSection from "@/Components/CaseStudiesSection";
@@ -11,7 +11,7 @@ import CallToAction from "@/Components/CallToAction";
 export default function Home() {
   return (<>
     <Hero />
-    <TrustedBy />
+    <TrustMarquee />
     <AboutMission />
     <Services />
     <CaseStudiesSection />
