@@ -62,7 +62,7 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 1 }}
           className="text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto font-medium leading-relaxed mb-12"
         >
-          We build sovereign AI agents that think, execute, and scale. 
+          We build Enterprise AI agents that think, execute, and scale. 
           From proprietary voice ecosystems to enterprise-grade automation — 
           we are the intelligence layer for the modern world.
         </motion.p>
